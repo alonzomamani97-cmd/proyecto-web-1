@@ -1,0 +1,190 @@
+/* ==========================================================
+   ESTILOS EXCLUSIVOS PARA REGISTRO (register.css)
+   ========================================================== */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+body.auth-body {
+  background: radial-gradient(circle at top right, #2e1065, #0f172a);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Luces de fondo con tonos violeta y magenta */
+body.auth-body::before,
+body.auth-body::after {
+  content: '';
+  position: absolute;
+  width: 360px;
+  height: 360px;
+  border-radius: 50%;
+  filter: blur(100px);
+  z-index: 0;
+  animation: floatLightRegister 12s infinite alternate ease-in-out;
+}
+
+body.auth-body::before {
+  background: #a855f7;
+  top: 5%;
+  right: 10%;
+}
+
+body.auth-body::after {
+  background: #ec4899;
+  bottom: 5%;
+  left: 10%;
+  animation-delay: -6s;
+}
+
+@keyframes floatLightRegister {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(-30px, 30px) scale(1.1);
+  }
+  100% {
+    transform: translate(20px, -20px) scale(0.95);
+  }
+}
+
+/* Tarjeta de Registro */
+.auth-card {
+  position: relative;
+  z-index: 1;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 40px 35px;
+  border-radius: 20px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+  width: 100%;
+  max-width: 420px;
+  animation: cardAppear 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes cardAppear {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Pestañas / Enlaces */
+.tabs {
+  display: flex;
+  margin-bottom: 25px;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 5px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.tabs .tab-link {
+  flex: 1;
+  padding: 12px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 600;
+  color: #94a3b8;
+  border-radius: 8px;
+  transition: all 0.35s ease;
+}
+
+.tabs .tab-link.active {
+  color: #ffffff;
+  background: linear-gradient(135deg, #a855f7 0%, #7e22ce 100%);
+  box-shadow: 0 4px 15px rgba(168, 85, 247, 0.4);
+}
+
+/* Formulario */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  animation: formFadeIn 0.5s ease-out forwards;
+}
+
+@keyframes formFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+form h2 {
+  font-size: 22px;
+  font-weight: 700;
+  color: #f8fafc;
+  text-align: center;
+  margin-bottom: 6px;
+}
+
+/* Inputs de texto */
+input {
+  width: 100%;
+  padding: 14px 16px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 10px;
+  font-size: 14px;
+  color: #ffffff;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+input::placeholder {
+  color: #cbd5e1;
+}
+
+input:focus {
+  background: rgba(255, 255, 255, 0.16);
+  border-color: #c084fc;
+  box-shadow: 0 0 0 4px rgba(168, 85, 247, 0.25);
+  transform: translateY(-1px);
+}
+
+/* Botón principal de Registro */
+.btn-primary {
+  margin-top: 10px;
+  padding: 14px;
+  background: linear-gradient(135deg, #a855f7 0%, #7e22ce 100%);
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(168, 85, 247, 0.4);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(168, 85, 247, 0.6);
+  background: linear-gradient(135deg, #c084fc 0%, #9333ea 100%);
+}
+
+.btn-primary:active {
+  transform: translateY(1px);
+}
