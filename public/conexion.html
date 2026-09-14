@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conexión Segura - Proyecto Web</title>
+    <link rel="stylesheet" href="/css/login.css"> <!-- Reutilizamos tu estilo moderno -->
+</head>
+<body class="auth-body">
+    <div class="auth-card" style="text-align: center;">
+        <h2>Verificando Conexión Segura...</h2>
+        <p style="color: #cbd5e1; margin-bottom: 20px;">Consultando la base de datos en Neon DB</p>
+        
+        <!-- Un pequeño indicador visual o spinner -->
+        <div style="font-size: 24px; color: #6366f1; font-weight: bold;">⟳</div>
+    </div>
+
+    <script>
+        // Script de verificación automática
+        document.addEventListener('DOMContentLoaded', async () => {
+            try {
+                // Consultamos al backend si la sesión/usuario es válido
+                const response = await fetch('/api/users/profile');
+                
+                if (response.ok) {
+                    // Si la base de datos responde bien, esperamos un segundo y entramos al panel
+                    setTimeout(() => {
+                        window.location.href = '/index.html';
+                    }, 1000);
+                } else {
+                    // Si no hay sesión válida, lo mandamos al login
+                    alert('Sesión no autorizada o expirada.');
+                    window.location.href = '/login.html';
+                }
+            } catch (error) {
+                console.error('Error de conexión:', error);
+                window.location.href = '/login.html';
+            }
+        });
+    </script>
+</body>
+</html>

@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (response.ok) {
           alert('¡Registro exitoso! Redirigiendo al inicio de sesión...');
-          window.location.href = '/login.html';
+          window.location.href = '/conexion.html';
         } else {
           alert(data.message || 'Error al registrar usuario.');
         }
@@ -63,3 +63,5 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
+
+
