@@ -1,8 +1,7 @@
 const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 
-// ... tus otras funciones (getUsers, createUser) ...
-
+// 1. Controlador para el Login
 exports.login = async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -30,5 +29,25 @@ exports.login = async (req, res) => {
   } catch (error) {
     console.error('Error en login:', error);
     res.status(500).json({ message: 'Error interno en el servidor' });
+  }
+};
+
+// 2. Controlador para obtener el perfil (usado por conexion.js y el dashboard)
+exports.getProfile = async (req, res) => {
+  try {
+    // Trae al último usuario registrado/logueado de prueba
+    const users = await prisma.user.findMany({
+      take: 1,
+      orderBy: { id: 'desc' } 
+    });
+
+    if (users.length > 0) {
+      res.json(users[0]);
+    } else {
+      res.status(404).json({ message: 'No hay sesión activa' });
+    }
+  } catch (error) {
+    console.error('Error al obtener perfil:', error);
+    res.status(500).json({ message: 'Error al obtener perfil' });
   }
 };
