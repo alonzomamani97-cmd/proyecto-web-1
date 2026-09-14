@@ -3,7 +3,7 @@ const path = require('path');
 const userRoutes = require('./src/routes/userRoutes');
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
 
@@ -19,5 +19,5 @@ app.get('/', (req, res) => {
 app.use('/api/users', userRoutes);
 
 app.listen(PORT, () => {
-  console.log(`Servidor iniciado en http://localhost:${PORT}`);
+  console.log(`Servidor iniciado en puerto ${PORT}`);
 });
